@@ -112,7 +112,7 @@ type PlayerStoreProps<T> = {
 
 	@within PlayerStore
 ]=]
-type PlayerStoreConfig<T> = {
+export type PlayerStoreConfig<T> = {
 	name: string,
 	template: T,
 	useDSSLocking: boolean?,
@@ -126,7 +126,7 @@ type PlayerStoreConfig<T> = {
 	useMock: boolean?,
 }
 
-type PlayerStore<T> = typeof(setmetatable({} :: PlayerStoreProps<T>, {} :: PlayerStoreImpl<T>))
+export type PlayerStore<T> = typeof(setmetatable({} :: PlayerStoreProps<T>, {} :: PlayerStoreImpl<T>))
 
 local function getUserIdKey(player: Player): string
 	return tostring(player.UserId)
@@ -196,15 +196,17 @@ end
 	@private
 ]=]
 function PlayerStore:_kickPlayer(keyOrPlayer: string | Player, message: string): ()
-	if typeof(keyOrPlayer) ~= "string" then
+    if typeof(keyOrPlayer) ~= "string" then
 		keyOrPlayer:Kick(message)
 	else
-		local userId = tonumber(keyOrPlayer)
-		if userId ~= nil then
-			local player = Players:GetPlayerByUserId(userId)
-			if player ~= nil then
-				player:Kick(message)
-			end
+        local id = tonumber(keyOrPlayer)
+        if id == nil then
+            warn(`Could not convert id {keyOrPlayer} to number`)
+            return
+        end
+		local player = Players:GetPlayerByUserId(id)
+		if player ~= nil then
+			player:Kick(message)
 		end
 	end
 end
