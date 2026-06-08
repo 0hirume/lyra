@@ -24,7 +24,7 @@ export type StoreContext<T> = Types.StoreContext<T>
 
 --[=[
 	Provides helper functions for creating common migration steps.
-	
+
 	@interface MigrationStep
 	.field addFields (name: string, fields: { [string]: any }) -> MigrationStep -- Creates a step to add new fields with default values.
 	.field transform (name: string, transformFunc: (currentValue: { [string]: any }) -> { [string]: any }) -> MigrationStep -- Creates a step with a custom data transformation function.
@@ -38,7 +38,7 @@ local MigrationStep = {
 
 --[=[
 	Factory function to create a new PlayerStore instance.
-	
+
 	@function createPlayerStore<T>
 	@param context PlayerStoreConfig<T> -- The configuration for the PlayerStore.
 	@return PlayerStore<T> -- A new PlayerStore instance.
@@ -62,5 +62,5 @@ return {
 	MigrationStep = MigrationStep,
 	createPlayerStore = createPlayerStore,
 	setLogLevel = setLogLevel,
-    createStore = createStore
+	createStore = createStore,
 }
