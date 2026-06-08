@@ -1,13 +1,13 @@
 [package]
-name = "010devx101/lyra"
+name = "0hirume/lyra"
 description = "Advanced player data management with a simple API. Updated to the new solver, exposed types and useful functions that used to be private"
-version = "0.6.3"
+version = "0.6.4"
 license = "MIT"
 authors = ["nomer888", "outofbears"]
 realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"
 homepage = "https://paradoxum-games.github.io/lyra/"
-repository = "https://github.com/010devx101/lyra"
+repository = "https://github.com/0hirume/lyra"
 exclude = ["*"]
 include = [
 	"src",
