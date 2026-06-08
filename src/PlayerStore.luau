@@ -124,7 +124,6 @@ export type PlayerStoreConfig<T> = {
 	logCallback: ((logMessage: Log.LogMessage) -> ())?,
 	memoryStoreService: MemoryStoreService?,
 	dataStoreService: DataStoreService?,
-	useMock: boolean?,
 }
 
 export type PlayerStore<T> = typeof(setmetatable({} :: PlayerStoreProps<T>, {} :: PlayerStoreImpl<T>))
@@ -183,7 +182,6 @@ local function createPlayerStore<T>(config: PlayerStoreConfig<T>): PlayerStore<T
 		end,
 		memoryStoreService = config.memoryStoreService,
 		dataStoreService = config.dataStoreService,
-		useMock = config.useMock,
 	}
 
 	local store = Store.createStore(storeConfig)
